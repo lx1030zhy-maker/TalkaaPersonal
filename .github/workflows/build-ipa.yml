@@ -1,0 +1,41 @@
+name: Build Talkaa IPA
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Project and Build Unsigned IPA
+        run: |
+          PROJ_DIR=$(dirname "$(find . -name project.yml | head -n 1)")
+          cd "$PROJ_DIR"
+          xcodegen generate
+          xcodebuild \
+            -project TalkaaPersonal.xcodeproj \
+            -scheme TalkaaPersonal \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/TalkaaPersonal.app Payload/
+          rm -rf Payload/TalkaaPersonal.app/PlugIns
+          zip -r TalkaaPersonal.ipa Payload
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TalkaaPersonal-IPA
+          path: "**/TalkaaPersonal.ipa"
