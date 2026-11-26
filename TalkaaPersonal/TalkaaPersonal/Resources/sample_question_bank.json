@@ -1,0 +1,47 @@
+{
+  "season": "2026 Q4 扩展真题包",
+  "questions": [
+    {
+      "id": "p1_ext_01",
+      "part": 1,
+      "category": "音乐与播客",
+      "topicTitle": "Podcasts & Audio Content",
+      "promptText": "Do you often listen to podcasts or audiobooks during your commute?",
+      "subQuestions": [
+        "What topics of podcasts interest you the most?",
+        "Do you prefer listening to music or podcasts when relaxing?"
+      ],
+      "isHighFrequency": true,
+      "targetBandTag": 7.0
+    },
+    {
+      "id": "p2_ext_01",
+      "part": 2,
+      "category": "人物类",
+      "topicTitle": "Describe a leader or manager you respect",
+      "promptText": "Describe a person in a leadership position whom you admire.",
+      "cueCardBullets": [
+        "Who this person is",
+        "How you know them",
+        "What leadership style they have",
+        "And explain why you respect them"
+      ],
+      "isHighFrequency": true,
+      "targetBandTag": 7.5,
+      "clusterGroupName": "一个难忘的人"
+    },
+    {
+      "id": "p3_ext_01",
+      "part": 3,
+      "category": "科技与隐私",
+      "topicTitle": "Digital Privacy & Smart Devices",
+      "promptText": "Should individuals be more concerned about how smart devices collect personal data?",
+      "subQuestions": [
+        "Who bears greater responsibility for data safety: tech companies or users?",
+        "How might privacy expectations differ between generations?"
+      ],
+      "isHighFrequency": true,
+      "targetBandTag": 7.5
+    }
+  ]
+}
